@@ -16,14 +16,14 @@ $(app): $(OBJS)
 depend: .depend
 
 .depend: $(SRCS)
-	rm -f ./.depend
+	$(RM) ./.depend
 	$(CXX) $(CXXFLAGS) -MM $^>>./.depend;
 
 clean:
-	rm -f $(OBJS)
+	$(RM) $(OBJS)
 
 cleanall: clean
-	rm -f *~ .depend
-	rm -f $(app)
+	$(RM) *~ .depend
+	$(RM) $(app)
 
 include .depend

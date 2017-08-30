@@ -25,7 +25,7 @@ class Student : public Person {
 };
 
 int main(){
-   Person *p = new Student(3,"Chris");
+   Student *p = new Student(3,(char *)"Chris");
    p->aboutMe();
    delete p;
    return 0;

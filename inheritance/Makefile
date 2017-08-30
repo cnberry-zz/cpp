@@ -1,8 +1,29 @@
-person: person.o
-	g++ -o person -g person.o
+app := person
 
-person.o: person.cpp
-	g++ -g -c -Wall person.cpp
+CXX 	:= g++
+CXXFLAGS:= -g -std=c++11 -Wall
+LDFLAGS := -g 
+LDLIBS 	:=
+
+SRCS := $(shell find . -name "*.cpp")
+OBJS := $(subst .cpp,.o,$(SRCS))
+
+all: $(app)
+
+$(app): $(OBJS)
+	$(CXX) $(LDFLAGS) -o $(app) $(OBJS) $(LDLIBS) 
+
+depend: .depend
+
+.depend: $(SRCS)
+	$(RM) ./.depend
+	$(CXX) $(CXXFLAGS) -MM $^>>./.depend;
 
 clean:
-	rm -f *.o person	
+	$(RM) $(OBJS)
+
+cleanall: clean
+	$(RM) *~ .depend
+	$(RM) $(app)
+
+include .depend
