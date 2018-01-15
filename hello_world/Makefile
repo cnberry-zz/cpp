@@ -1,6 +1,7 @@
 app := hello
 
-CXX 	:= g++
+CXX 	:= /depot/gcc-4.8.2/bin/g++
+LD		:= /depot/binutils-2.27/bin/ld
 CXXFLAGS:= -g -std=c++11
 LDFLAGS := -g 
 LDLIBS 	:=
