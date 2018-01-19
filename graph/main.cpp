@@ -5,8 +5,8 @@
 int main()
 {
 	ds::graph g;
-	int nodeId;
 
+		
 	std::cout << "Adding 5 vertecies: ";
 	std::cout << g.addNode() << " ";
 	std::cout << g.addNode() << " ";
@@ -25,4 +25,14 @@ int main()
 
 	g.print();
 
+
+	//dfs print
+	g.dfsPrint(0);
+	g.dfsPrint(1);
+
+	//bfs print
+	g.bfsPrint(0);
+	g.bfsPrint(1);
+	g.bfsPrint(2);
+	g.bfsPrint(3);
 }
