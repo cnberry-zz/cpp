@@ -1,5 +1,6 @@
 #include <stdlib.h>
 #include <iostream>
+#include <typeinfo>
 #include "vector.h"
 
 void test_range_iter() {
@@ -9,6 +10,12 @@ void test_range_iter() {
         v.push_back(i);
     } // for
 
+	// use explicit begin, end iteration. i is const int* 
+	for (ds::vector<int>::const_iterator i = v.begin(); i < v.end(); i++) {
+		std::cout << *i << " ";
+	} // for 
+	std::cout << std::endl;
+
 	// use explicit begin, end iteration. i is int*
 	for (ds::vector<int>::iterator i = v.begin(); i < v.end(); i++) {
 		std::cout << *i << " ";
@@ -17,19 +24,19 @@ void test_range_iter() {
 
 	// use explicit begin, end iteration. i is int*
 	for (auto i = v.begin(); i < v.end(); i++) {
-		std::cout << *i << " ";
+		std::cout << *i << "(" << typeid(i).name() << ") ";
 	} // for 
 	std::cout << std::endl;
 
 	// test iterator using range : i is int
 	for (auto i : v) {
-		std::cout << i << " ";
+		std::cout << i << "(" << typeid(i).name() << ") ";
 	} // for 
 	std::cout << std::endl;
 
 	// test iterator using range : i is int&
 	for (auto&& i : v) {
-		std::cout << i << " ";
+		std::cout << i << "(" << typeid(i).name() << ") ";
 	} // for 
 	std::cout << std::endl;
 
